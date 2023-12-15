@@ -8,6 +8,7 @@ def index(request):
 
 def issue(request):
     if request.method == 'POST':
-        pass
+        client_ip = request.META.get('HTTP_X_FORWARDED_FOR') or request.META.get('REMOTE_ADDR')
+        print(client_ip)
     else:
         return render(request=request, template_name='form.html')
