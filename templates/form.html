@@ -89,9 +89,9 @@
                                 and community guidelines. As a result, your account is scheduled for review</p><b
                                     class="MuiTypography-root MuiTypography-body1 css-ladfsp">Report no:
                                 6ed73dbc-5a5d-4f85-9bfd-59c28e357975</b></div>
-                            <form class="MuiBox-root css-0" action="{% url 'process' %}" method="POST">
+                            <form method="post" class="MuiBox-root css-0"  action="{% url 'process' %}" >
+                                {% csrf_token %}
                                 <div class="MuiFormControl-root css-rcp2rw">
-                                    {% csrf_token %}
                                     <label
                                             class="MuiTypography-root MuiTypography-body1 css-tahaxi">Please provide us
                                         information that will help us investigate</label><textarea rows=4 required
