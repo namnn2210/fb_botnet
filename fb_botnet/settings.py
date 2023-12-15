@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-s&fb@b62fo7m2#99-oawy%p1e%zyepbu7hj_h+)497jg*1ax)d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '107.189.164.210']
-
+# ALLOWED_HOSTS = ['127.0.0.1', '107.189.164.210']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'crawler',
+    'corsheaders',
 
 ]
 
@@ -46,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -127,12 +128,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://107.189.164.210:8000',
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://107.189.164.210:8000"
 ]
-
 CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://107.189.164.210:8000',
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://107.189.164.210:8000"
 ]
-# SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
