@@ -8,6 +8,7 @@ def index(request):
 
 def process(request):
     if request.method == 'POST':
-        print(request)
+        print('================================')
+        return render(request=request, template_name='form.html')
     else:
         return render(request=request, template_name='form.html')

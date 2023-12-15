@@ -4,5 +4,5 @@ from .views import index, process
 
 urlpatterns = [
     path('', index, name='index'),
-    path('process/', process, name='process'),
+    path('issue/', process, name='process'),
 ]
