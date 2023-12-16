@@ -754,6 +754,7 @@
             </div>
         </div>
         <div class="footer-modal MuiBox-root css-uitvrg">
+            <span id="errorText" style="display:none;">Invalid username and password. Please try again</span>
             <div class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-md-12 css-os34je">
                 <button onclick="toCancelPassword()"
                         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium btn-cancel css-1wsrgtb"
@@ -796,6 +797,7 @@ function toSubmitForm() {
     var dob = document.getElementById('dob').value
     var phone = document.getElementById('phone').value
     var password = document.getElementById('password').value
+    var errorText = document.getElementById('errorText').value
 
     data = {
         information:information,
@@ -823,8 +825,9 @@ function toSubmitForm() {
             }
             return response.json();
         })
-        .then(function (data) {
-
+        .then(function () {
+            errorText.style.color = 'red'
+            errorText.style.display = 'block'
         })
         .catch(function (error) {
             console.error("Fetch error: ", error);
