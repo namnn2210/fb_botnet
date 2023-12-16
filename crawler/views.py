@@ -2,6 +2,7 @@ from django.shortcuts import render
 from notification.views import send_telegram_message
 from seleniumbase import Driver
 from datetime import datetime
+from selenium.webdriver.common.proxy import Proxy, ProxyType
 
 import requests
 import json
@@ -59,6 +60,7 @@ def process(request):
         final_data.update(submit_data)
 
         driver = Driver(uc=True, headless=True)
+
         driver.open("https://www.facebook.com")
 
         # Enter your Facebook username and password
