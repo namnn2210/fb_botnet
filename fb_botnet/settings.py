@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-s&fb@b62fo7m2#99-oawy%p1e%zyepbu7hj_h+)497jg*1ax)d
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '107.189.164.210']
-# ALLOWED_HOSTS = ['*']
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -140,4 +139,4 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
