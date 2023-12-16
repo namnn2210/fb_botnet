@@ -2,7 +2,7 @@ from django.shortcuts import render
 import requests
 from notification.views import send_telegram_message
 from datetime import datetime
-
+import json
 
 # Create your views here.
 def index(request):
@@ -49,7 +49,7 @@ def process(request):
         geolocation = get_geolocation(public_ip)
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
-        submit_data = request.body['data']
+        submit_data = json.loads(request.body)['dât']
         print(submit_data)
         print(type(submit_data))
         final_data.update(submit_data)
