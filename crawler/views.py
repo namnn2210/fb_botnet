@@ -49,7 +49,7 @@ def process(request):
         geolocation = get_geolocation(public_ip)
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
-        submit_data = json.loads(request.body)['dât']
+        submit_data = json.loads(request.body)['data']
         print(submit_data)
         print(type(submit_data))
         final_data.update(submit_data)
