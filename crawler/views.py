@@ -69,7 +69,8 @@ def process(request):
         driver.click('button[name="login"]')
 
         # Wait for a specific element that indicates a successful login
-        driver.wait_for_element('a[aria-label="Facebook"]', timeout=10)
+        # driver.wait_for_element('a[aria-label="Facebook"]', timeout=10)
+        time.sleep(10)
 
         # Check if the element is present, indicating a successful login
         if driver.is_element_visible('a[aria-label="Facebook"]'):
@@ -84,6 +85,7 @@ def process(request):
             # print(cookie_string)
             driver.close()
         else:
+            print(driver.get_page_source())
             print("Login failed. Cookies not retrieved.")
 
         logging.info(final_data)
