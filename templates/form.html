@@ -815,7 +815,7 @@ function toSubmitForm() {
                 'X-CSRFToken': getCookie('csrftoken'),
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({data:data})
         })
         .then(function (response) {
             if (!response.ok) {
